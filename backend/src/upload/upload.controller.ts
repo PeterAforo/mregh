@@ -3,6 +3,7 @@ import { FileInterceptor } from '@nestjs/platform-express';
 import { ApiTags, ApiBearerAuth, ApiConsumes } from '@nestjs/swagger';
 import { diskStorage } from 'multer';
 import { extname, join } from 'path';
+import * as os from 'os';
 import { JwtAuthGuard } from '../auth/jwt-auth.guard';
 import { PrismaService } from '../prisma/prisma.service';
 import * as fs from 'fs';
@@ -18,7 +19,7 @@ export class UploadController {
   @ApiConsumes('multipart/form-data')
   @UseInterceptors(FileInterceptor('file', {
     storage: diskStorage({
-      destination: process.env.VERCEL ? '/tmp' : join(process.cwd(), 'uploads'),
+      destination: os.tmpdir(),
       filename: (req, file, cb) => {
         const unique = Date.now() + '-' + Math.round(Math.random() * 1e9);
         cb(null, unique + extname(file.originalname));
