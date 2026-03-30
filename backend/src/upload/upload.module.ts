@@ -3,7 +3,7 @@ import { MulterModule } from '@nestjs/platform-express';
 import { UploadController } from './upload.controller';
 
 @Module({
-  imports: [MulterModule.register({ dest: './uploads' })],
+  imports: [MulterModule.register({ dest: process.env.VERCEL ? '/tmp' : './uploads' })],
   controllers: [UploadController],
 })
 export class UploadModule {}

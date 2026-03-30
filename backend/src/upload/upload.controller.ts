@@ -18,7 +18,7 @@ export class UploadController {
   @ApiConsumes('multipart/form-data')
   @UseInterceptors(FileInterceptor('file', {
     storage: diskStorage({
-      destination: join(process.cwd(), 'uploads'),
+      destination: process.env.VERCEL ? '/tmp' : join(process.cwd(), 'uploads'),
       filename: (req, file, cb) => {
         const unique = Date.now() + '-' + Math.round(Math.random() * 1e9);
         cb(null, unique + extname(file.originalname));
