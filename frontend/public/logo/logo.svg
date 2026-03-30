@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="none">
+  <!-- Background -->
+  <rect width="200" height="200" fill="#0A0A0A"/>
+  <!-- Red accent bar -->
+  <rect x="0" y="0" width="8" height="200" fill="#CC0000"/>
+  <!-- Building silhouette -->
+  <rect x="30" y="80" width="40" height="100" fill="#CC0000"/>
+  <rect x="80" y="50" width="55" height="130" fill="#CC0000" opacity="0.85"/>
+  <rect x="145" y="100" width="35" height="80" fill="#CC0000" opacity="0.7"/>
+  <!-- Windows -->
+  <rect x="38" y="90" width="10" height="10" fill="#0A0A0A" opacity="0.6"/>
+  <rect x="52" y="90" width="10" height="10" fill="#0A0A0A" opacity="0.6"/>
+  <rect x="38" y="108" width="10" height="10" fill="#0A0A0A" opacity="0.6"/>
+  <rect x="52" y="108" width="10" height="10" fill="#0A0A0A" opacity="0.6"/>
+  <rect x="88" y="62" width="10" height="10" fill="#0A0A0A" opacity="0.6"/>
+  <rect x="104" y="62" width="10" height="10" fill="#0A0A0A" opacity="0.6"/>
+  <rect x="88" y="80" width="10" height="10" fill="#0A0A0A" opacity="0.6"/>
+  <rect x="104" y="80" width="10" height="10" fill="#0A0A0A" opacity="0.6"/>
+  <rect x="88" y="98" width="10" height="10" fill="#0A0A0A" opacity="0.6"/>
+  <rect x="104" y="98" width="10" height="10" fill="#0A0A0A" opacity="0.6"/>
+  <!-- MRE Text -->
+  <text x="20" y="195" font-family="Arial, sans-serif" font-weight="900" font-size="22" fill="white" letter-spacing="4">MRE</text>
+</svg>

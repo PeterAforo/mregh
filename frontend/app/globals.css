@@ -1,0 +1,228 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================
+   LIGHT MODE (default — bg vars as space-separated RGB)
+   ============================================================ */
+:root {
+  --brand-red: #CC0000;
+  --brand-red-dark: #990000;
+  --font-inter: 'Inter', sans-serif;
+  --font-montserrat: 'Montserrat', sans-serif;
+
+  /* Background palette */
+  --bg-base: 255 255 255;    /* #FFFFFF */
+  --bg-100:  248 249 250;    /* #F8F9FA */
+  --bg-200:  240 241 243;    /* #F0F1F3 */
+  --bg-300:  229 231 234;    /* #E5E7EA */
+  --bg-400:  206 210 214;    /* #CED2D6 */
+  --bg-500:  168 173 179;    /* #A8ADB3 */
+
+  /* Semantic tokens */
+  --color-text-primary:   17 17 17;      /* #111111 */
+  --color-text-secondary: 102 102 102;   /* #666666 */
+  --color-text-muted:     136 136 136;   /* #888888 */
+  --color-border:         0 0 0;         /* used with opacity */
+}
+
+/* ============================================================
+   DARK MODE (html.dark)
+   ============================================================ */
+html.dark {
+  --bg-base: 10 10 10;     /* #0A0A0A */
+  --bg-100:  17 17 17;     /* #111111 */
+  --bg-200:  26 26 26;     /* #1A1A1A */
+  --bg-300:  34 34 34;     /* #222222 */
+  --bg-400:  51 51 51;     /* #333333 */
+  --bg-500:  68 68 68;     /* #444444 */
+
+  --color-text-primary:   255 255 255;   /* #FFFFFF */
+  --color-text-secondary: 160 160 160;   /* #A0A0A0 */
+  --color-text-muted:     102 102 102;   /* #666666 */
+  --color-border:         255 255 255;
+}
+
+/* ============================================================
+   BASE RESETS
+   ============================================================ */
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: rgb(var(--bg-base));
+  color: rgb(var(--color-text-primary));
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* ============================================================
+   LIGHT MODE — override Tailwind hardcoded colour classes
+   ============================================================ */
+html:not(.dark) .text-white    { color: #111111 !important; }
+html:not(.dark) .text-gray-100 { color: #1a1a1a !important; }
+html:not(.dark) .text-gray-200 { color: #2d2d2d !important; }
+html:not(.dark) .text-gray-300 { color: #444444 !important; }
+html:not(.dark) .text-gray-400 { color: #555555 !important; }
+html:not(.dark) .text-gray-500 { color: #777777 !important; }
+html:not(.dark) .text-gray-600 { color: #888888 !important; }
+
+/* borders */
+html:not(.dark) [class*="border-white\\/"] { border-color: rgba(0,0,0,0.10) !important; }
+html:not(.dark) [class*="divide-white"]    { --tw-divide-opacity: 0.08; border-color: rgba(0,0,0,0.08) !important; }
+
+/* subtle overlays that sit inside image sections — keep dark */
+html:not(.dark) .bg-dark-200.border { background-color: rgb(var(--bg-200)) !important; }
+
+/* card inner text stays readable */
+html:not(.dark) .text-gradient {
+  background: linear-gradient(135deg, #CC0000, #FF4444);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Navbar: when scrolled background colour respects theme via CSS var - ok already */
+/* Force Navbar text in light mode */
+html:not(.dark) nav .text-white { color: #111111 !important; }
+html:not(.dark) nav .text-gray-400 { color: #555555 !important; }
+html:not(.dark) nav .text-gray-300 { color: #666666 !important; }
+
+/* scrollbar adapts */
+html:not(.dark) ::-webkit-scrollbar-track { background: #f0f0f0; }
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #111;
+}
+::-webkit-scrollbar-thumb {
+  background: #CC0000;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #FF0000;
+}
+
+/* Selection */
+::selection {
+  background: #CC0000;
+  color: #fff;
+}
+
+/* Utility classes */
+.text-gradient {
+  background: linear-gradient(135deg, #CC0000, #FF4444);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.glass {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-dark {
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.noise-bg {
+  position: relative;
+}
+.noise-bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Red line accent */
+.red-line {
+  position: relative;
+}
+.red-line::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 100%;
+  background: #CC0000;
+}
+
+/* Section spacing */
+.section-padding {
+  padding: 5rem 0;
+}
+
+@media (max-width: 768px) {
+  .section-padding {
+    padding: 3rem 0;
+  }
+}
+
+/* Animated underline */
+.hover-underline {
+  position: relative;
+}
+.hover-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #CC0000;
+  transition: width 0.3s ease;
+}
+.hover-underline:hover::after {
+  width: 100%;
+}
+
+/* Button base */
+.btn-primary {
+  @apply inline-flex items-center gap-2 bg-brand-red text-white px-8 py-4 font-semibold uppercase tracking-wider text-sm transition-all duration-300 hover:bg-brand-red-dark;
+}
+
+.btn-outline {
+  @apply inline-flex items-center gap-2 border-2 border-brand-red text-brand-red px-8 py-4 font-semibold uppercase tracking-wider text-sm transition-all duration-300 hover:bg-brand-red hover:text-white;
+}
+
+.btn-white {
+  @apply inline-flex items-center gap-2 bg-white text-brand-black px-8 py-4 font-semibold uppercase tracking-wider text-sm transition-all duration-300 hover:bg-gray-100;
+}
+
+/* Swiper customization */
+.swiper-pagination-bullet {
+  background: #CC0000 !important;
+}
+.swiper-pagination-bullet-active {
+  background: #CC0000 !important;
+}
+.swiper-button-next,
+.swiper-button-prev {
+  color: #CC0000 !important;
+}
+
+/* Loading bar */
+@keyframes loading-bar {
+  0% { width: 0%; }
+  100% { width: 100%; }
+}
