@@ -47,12 +47,12 @@ export default function Hero() {
         if (data && data.length > 0) {
           const mapped = data
             .sort((a, b) => a.order - b.order)
-            .map(s => ({
+            .map((s, i) => ({
               title: '',
               titleAccent: s.title,
               subtitle: s.subtitle || 'Building Creative Communities',
               description: s.description || '',
-              image: resolveImageUrl(s.image, FALLBACK_SLIDES[0].image),
+              image: resolveImageUrl(s.image, FALLBACK_SLIDES[i % FALLBACK_SLIDES.length].image),
               cta: { text: s.ctaText || 'Learn More', href: s.ctaLink || '/projects' },
             }));
           setSlides(mapped);
