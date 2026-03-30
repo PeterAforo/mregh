@@ -14,13 +14,19 @@ import { ContactModule } from './contact/contact.module';
 import { SettingsModule } from './settings/settings.module';
 import { UploadModule } from './upload/upload.module';
 
+const staticModule = process.env.VERCEL
+  ? []
+  : [
+      ServeStaticModule.forRoot({
+        rootPath: join(__dirname, '..', 'uploads'),
+        serveRoot: '/uploads',
+      }),
+    ];
+
 @Module({
   imports: [
     ConfigModule.forRoot({ isGlobal: true }),
-    ServeStaticModule.forRoot({
-      rootPath: join(__dirname, '..', 'uploads'),
-      serveRoot: '/uploads',
-    }),
+    ...staticModule,
     PrismaModule,
     AuthModule,
     ProjectsModule,
