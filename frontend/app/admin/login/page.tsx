@@ -76,9 +76,6 @@ export default function AdminLoginPage() {
               {loading ? 'Signing in...' : 'Sign In'}
             </button>
           </form>
-          <p className="text-gray-600 text-xs text-center mt-6">
-            Default: admin@mrerealestate.com / Admin@MRE2024
-          </p>
         </div>
 
         <p className="text-center mt-6">

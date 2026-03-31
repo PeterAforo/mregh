@@ -1,12 +1,11 @@
 import { NestFactory } from '@nestjs/core';
-import { ValidationPipe } from '@nestjs/common';
+import { ValidationPipe, Logger } from '@nestjs/common';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
-import { NestExpressApplication } from '@nestjs/platform-express';
-import { join } from 'path';
 import { AppModule } from './app.module';
 
 async function bootstrap() {
-  const app = await NestFactory.create<NestExpressApplication>(AppModule);
+  const logger = new Logger('Bootstrap');
+  const app = await NestFactory.create(AppModule, { logger: ['error', 'warn', 'log', 'debug'] });
 
   const allowedOrigins = [
     'http://localhost:3000',
@@ -35,10 +34,6 @@ async function bootstrap() {
 
   app.setGlobalPrefix('api');
 
-  app.useStaticAssets(join(__dirname, '..', 'uploads'), {
-    prefix: '/uploads',
-  });
-
   const config = new DocumentBuilder()
     .setTitle('MRE Real Estate & Construction API')
     .setDescription('Backend API for MRE website CMS')
@@ -50,7 +45,7 @@ async function bootstrap() {
 
   const port = process.env.PORT || 3001;
   await app.listen(port);
-  console.log(`🏗️  MRE Backend running on http://localhost:${port}`);
-  console.log(`📖 API Docs: http://localhost:${port}/api/docs`);
+  logger.log(`MRE Backend running on http://localhost:${port}`);
+  logger.log(`API Docs: http://localhost:${port}/api/docs`);
 }
 bootstrap();

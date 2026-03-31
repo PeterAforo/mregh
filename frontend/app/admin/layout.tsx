@@ -8,6 +8,7 @@ import {
   Star, Image as ImageIcon, MessageSquare, Settings, LogOut,
   Menu, X, ChevronRight, ExternalLink
 } from 'lucide-react';
+import ErrorBoundary from '@/components/admin/ErrorBoundary';
 
 const navItems = [
   { href: '/admin', icon: LayoutDashboard, label: 'Dashboard' },
@@ -128,7 +129,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
 
         {/* Page content */}
         <main className="flex-1 p-6 overflow-auto">
-          {children}
+          <ErrorBoundary>{children}</ErrorBoundary>
         </main>
       </div>
     </div>

@@ -17,10 +17,9 @@ export default function ProjectForm() {
   useEffect(() => {
     if (!isNew) {
       setLoading(true);
-      adminApi.getProjects().then((list: any[]) => {
-        const item = list.find((p: any) => p.id === Number(params.id));
+      adminApi.getProjectById(Number(params.id)).then((item: any) => {
         if (item) setForm({ ...empty, ...item, gallery: Array.isArray(item.gallery) ? item.gallery.join(', ') : item.gallery || '' });
-      }).finally(() => setLoading(false));
+      }).catch(() => {}).finally(() => setLoading(false));
     }
   }, [isNew, params.id]);
 

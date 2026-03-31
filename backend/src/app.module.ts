@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
-import { ServeStaticModule } from '@nestjs/serve-static';
-import { join } from 'path';
+import { ThrottlerModule, ThrottlerGuard } from '@nestjs/throttler';
+import { APP_GUARD } from '@nestjs/core';
 import { PrismaModule } from './prisma/prisma.module';
 import { AuthModule } from './auth/auth.module';
 import { ProjectsModule } from './projects/projects.module';
@@ -13,20 +13,12 @@ import { HeroModule } from './hero/hero.module';
 import { ContactModule } from './contact/contact.module';
 import { SettingsModule } from './settings/settings.module';
 import { UploadModule } from './upload/upload.module';
-
-const staticModule = process.env.VERCEL
-  ? []
-  : [
-      ServeStaticModule.forRoot({
-        rootPath: join(__dirname, '..', 'uploads'),
-        serveRoot: '/uploads',
-      }),
-    ];
+import { HealthModule } from './health/health.module';
 
 @Module({
   imports: [
     ConfigModule.forRoot({ isGlobal: true }),
-    ...staticModule,
+    ThrottlerModule.forRoot([{ ttl: 60000, limit: 60 }]),
     PrismaModule,
     AuthModule,
     ProjectsModule,
@@ -38,6 +30,10 @@ const staticModule = process.env.VERCEL
     ContactModule,
     SettingsModule,
     UploadModule,
+    HealthModule,
+  ],
+  providers: [
+    { provide: APP_GUARD, useClass: ThrottlerGuard },
   ],
 })
 export class AppModule {}

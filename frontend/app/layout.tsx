@@ -7,7 +7,7 @@ const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 const montserrat = Montserrat({ subsets: ['latin'], variable: '--font-montserrat' });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://mreconstruction.com'),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://mregh-frontend.vercel.app'),
   title: {
     default: "MRE Construction | Building Creative Communities",
     template: '%s | MRE Construction',

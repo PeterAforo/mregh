@@ -65,6 +65,7 @@ export const getProfile = () =>
 
 export const adminApi = {
   getProjects: () => api.get('/projects?published=false').then(r => r.data),
+  getProjectById: (id: number) => api.get(`/projects/id/${id}`).then(r => r.data),
   createProject: (data: any) => api.post('/projects', data).then(r => r.data),
   updateProject: (id: number, data: any) => api.put(`/projects/${id}`, data).then(r => r.data),
   deleteProject: (id: number) => api.delete(`/projects/${id}`).then(r => r.data),

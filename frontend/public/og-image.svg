@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#0a0a0a"/>
+  <rect x="0" y="0" width="6" height="630" fill="#dc2626"/>
+  <rect x="0" y="0" width="1200" height="4" fill="#1a1a1a"/>
+  <rect x="0" y="626" width="1200" height="4" fill="#1a1a1a"/>
+  <rect x="60" y="200" width="60" height="4" fill="#dc2626"/>
+  <text x="60" y="290" font-family="Arial Black, Arial, sans-serif" font-size="72" font-weight="900" fill="white" letter-spacing="-2">MRE Construction</text>
+  <text x="60" y="360" font-family="Arial, sans-serif" font-size="28" fill="#9ca3af">Building Creative Communities</text>
+  <text x="60" y="430" font-family="Arial, sans-serif" font-size="22" fill="#6b7280">Ghana&apos;s Premier Construction &amp; Real Estate Company</text>
+  <rect x="60" y="470" width="200" height="3" fill="#dc2626"/>
+  <text x="60" y="520" font-family="Arial, sans-serif" font-size="18" fill="#6b7280">Architectural Design · Interior Decoration · Civil Engineering</text>
+  <circle cx="1050" cy="315" r="160" fill="#1a1a1a" stroke="#dc2626" stroke-width="2"/>
+  <text x="1050" y="295" font-family="Arial Black, Arial, sans-serif" font-size="48" font-weight="900" fill="#dc2626" text-anchor="middle">MRE</text>
+  <text x="1050" y="345" font-family="Arial, sans-serif" font-size="16" fill="#9ca3af" text-anchor="middle">EST. 2009</text>
+</svg>
