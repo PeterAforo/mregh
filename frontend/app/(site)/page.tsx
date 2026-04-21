@@ -8,8 +8,8 @@ import BlogSection from '@/components/site/BlogSection';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: "MRE Construction | Building Creative Communities",
-  description: "Ghana's premier construction company delivering world-class architectural design, interior decoration, residential & commercial construction, civil engineering and project management.",
+  title: "MRE Constructions Ghana | Building Creative Communities",
+  description: "MRE Constructions is a Ghanaian company delivering architectural, civil and structural engineering, interior decor, property management, and residential/commercial construction solutions.",
 };
 
 export default function HomePage() {
